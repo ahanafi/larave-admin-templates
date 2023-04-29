@@ -118,7 +118,7 @@
                     </ul>
                 </li>
                 <li class="nav-item bg-danger rounded">
-                    <a href="#" class="nav-link">
+                    <a href="#" data-toggle="modal" data-target="#confirm-logout" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>Logout</p>
                     </a>
@@ -129,3 +129,26 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<div class="modal fade" id="confirm-logout">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirm Logout</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want logout?</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" onclick="event.preventDefault(); document.querySelector('#logout-form').submit()" class="btn btn-danger">Yes, Logout now</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<form method="post" action="{{ route('logout') }}" id="logout-form">@csrf</form>
