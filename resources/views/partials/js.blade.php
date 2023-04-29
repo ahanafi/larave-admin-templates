@@ -32,4 +32,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('js/pages/dashboard.js') }}"></script>
+@if(request()->routeIs('dashboard'))
+    <script src="{{ asset('js/pages/dashboard.js') }}"></script>
+@endif
+@stack('scripts')
