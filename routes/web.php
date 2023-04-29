@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::group([
+    'prefix' => 'common-pages',
+    'as' => 'common-pages.'
+], function () {
+    Route::get('blank', [PagesController::class, 'blank'])->name('blank');
+    Route::get('starter', [PagesController::class, 'starter'])->name('starter');
 });

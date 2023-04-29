@@ -71,7 +71,7 @@
                         <p>User Management</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('common-pages.blank') || request()->routeIs('common-pages.starter') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-book"></i>
                         <p>
@@ -81,13 +81,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/blank.html" class="nav-link">
+                            <a href="{{ route('common-pages.blank') }}" class="nav-link {{ request()->routeIs('common-pages.blank') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Blank Page</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="starter.html" class="nav-link">
+                            <a href="{{ route('common-pages.starter') }}" class="nav-link {{ request()->routeIs('common-pages.starter') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Starter Page</p>
                             </a>
