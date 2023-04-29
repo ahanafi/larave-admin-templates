@@ -94,7 +94,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item  {{ request()->routeIs('error-pages.error500') || request()->routeIs('error-pages.error404') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-bug"></i>
                         <p>
@@ -104,13 +104,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/examples/404.html" class="nav-link">
+                            <a href="{{ route('error-pages.error404') }}" class="nav-link {{ request()->routeIs('error-pages.error404') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Error 404</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/500.html" class="nav-link">
+                            <a href="{{ route('error-pages.error500') }}" class="nav-link {{ request()->routeIs('error-pages.error500') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Error 500</p>
                             </a>

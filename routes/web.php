@@ -30,3 +30,11 @@ Route::group([
     Route::get('blank', [PagesController::class, 'blank'])->name('blank');
     Route::get('starter', [PagesController::class, 'starter'])->name('starter');
 });
+
+Route::group([
+    'prefix' => 'error-pages',
+    'as' => 'error-pages.'
+], function () {
+    Route::get('500', [PagesController::class, 'error500'])->name('error500');
+    Route::get('404', [PagesController::class, 'error404'])->name('error404');
+});
