@@ -1,69 +1,55 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+    <div class="card card-primary">
+        <div class="card-header"><h4>Login</h4></div>
 
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input name="email" type="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="Email" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
+        <div class="card-body">
+            <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                @csrf
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" tabindex="1" required autofocus value="{{ old('email') }}">
+
+                    @error('email')
+                        <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <div class="d-block">
+                        <label for="password" class="control-label">Password</label>
+                        <div class="float-right">
+                            <a href="{{ route('password.request') }}" class="text-small">
+                                Forgot Password?
+                            </a>
                         </div>
-
-                        @error('email')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2" required>
 
-                        @error('password')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
+                    @error('password')
+                        <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
+                               id="remember-me">
+                        <label class="custom-control-label" for="remember-me">Remember Me</label>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                </div>
 
-                <!-- /.social-auth-links -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Login
+                    </button>
+                </div>
+            </form>
 
-                <p class="mb-1">
-                    <a href="{{ route('password.update') }}">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
-                </p>
-            </div>
-            <!-- /.login-card-body -->
         </div>
     </div>
-    <!-- /.login-box -->
+    <div class="mt-5 text-muted text-center">
+        Don't have an account? <a href="{{ route('register') }}">Create One</a>
+    </div>
 @endsection
